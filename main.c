@@ -45,36 +45,44 @@ struct array_object divide_arrays(int *dividend, int dividend_size, int divisor)
 //FNT
 
 int main() {
-//    each_input_block_in_elements[0]= 32
-//    each_input_block_in_elements[1]= 91
-//    each_input_block_in_elements[2]= 76
-//    each_input_block_in_elements[3]= 22
-//    each_input_block_in_elements[4]= 99
-//    each_input_block_in_elements[5]= 101
-//    each_input_block_in_elements[6]= 102
-//    each_input_block_in_elements[7]= 105
-
-//    each_input_block_in_elements[0]= 57
-//    each_input_block_in_elements[1]= 106
-//    each_input_block_in_elements[2]= 0
-//    each_input_block_in_elements[3]= 0
-//    each_input_block_in_elements[4]= 0
-//    each_input_block_in_elements[5]= 0
-//    each_input_block_in_elements[6]= 0
-//    each_input_block_in_elements[7]= 0
     int Mp = (1 << p)-1;
-    char message[8] = {'A','n', 'a','l','y','s','i','s'};
-//    int x_n[8] = {32, 91, 76, 22, 99, 101, 102, 105};
-//    int x_n[8] = {57, 106, 0, 0, 0, 0, 0, 0};
+    //char message[8] = {'A','n', 'a','l','y','s','i','s'};
+//    char message[8] = {0,' ',' ',' ',' ',' ',' ',' '};
+    //    char *plaintext_FNT[8] = {"65", "110", "97", "108", "121", "115", "105", "115"};
 
-    int x_n[8] = {65, 110, 97, 108, 121, 115, 105, 115};
-//    int x_n[16] = {43, 49, 65, 5, 57, 107, 2, 13, 47, 109, 31, 29, 5, 51, 53, 7};
-//    int x_n[8] = {32,91,76,22,99,101,102,105};
+int x_n[8] = {65, 110, 97, 108, 121, 115, 105, 115};
+//int x_n[16] = {0, 106, 36, 68, 116, 26, 0, 50, 100, 13, 50,  93, 107, 9, 9, 36};
+
     int *plaintext = x_n;
-    char *plaintext_FNT[8] = {"65", "110", "97", "108", "121", "115", "105", "115"};
+
+
+//    output_FNT[0] = 110
+//    output_FNT[1] = 77
+//    output_FNT[2] = 166
+//    output_FNT[3] = 6
+//    output_FNT[4] = 66
+//    output_FNT[5] = 204
+//    output_FNT[6] = 8
+//    output_FNT[7] = 227
+
+//    char plaintext[3][8] =
+//{
+//  {'6','5','\0'},
+//  {'1','1','0'\0'},
+//  {'9','7'\0'},
+//  {'1','0','8'\0'},
+//  {'1','2','1'\0'},
+//  {'1','1','5'\0'},
+//  {'1','0','5'\0'},
+//  {'1','1','5'\0'},
+//};
 
     //TESTING THE NMNT FUNCTION
     int *output_NMNT = (int *) calloc(N, sizeof(int));
+
+    for(int i = 0; i < N; i++){
+        printf("plaintext = %d\n", plaintext[i]);
+    }
 
     //CALCULATE NMNT
     output_NMNT = calculate_NMNT(plaintext, N, Mp);
@@ -109,14 +117,32 @@ int main() {
     printf("\n");
 
     //CALCULATE FNT
+    //CALCULATE FNT
+    printf("FNT:\n");
+    char** plaintext_FNT = memory_allocation_for_2D_array(N,N);
+
+    for(int index = 0; index < N; index++){
+//            printf("test_plaintext[%d] = %d\n", index, test_plaintext[index]);
+        sprintf(plaintext_FNT[index], "%d", plaintext[index]);
+//            printf("%s\n", plaintext_FNT[i]);
+    }
+
+    for(int i = 0; i < N ; i++){
+        for(int j = 0; j < 3; j++){
+                printf("plaintext_FNT[%d][%d] = %c\n", i, j, plaintext_FNT[i][j]);
+        }
+//            printf("\n");
+    }
+
+
+//    char **output_FNT = calculate_FNT(plaintext_FNT, 3);
+
     printf("FNT:\n");
     int *X_k = (int *) calloc(N, sizeof(int));
     X_k = calculate_FNT(plaintext_FNT, 3);
     for(int i = 0; i < N; i++){
         printf("output_FNT[%d] = %d\n", i, X_k[i]);
     }
-
-
     return 0;
 
 }
