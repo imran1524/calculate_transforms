@@ -136,15 +136,13 @@ int x_n[8] = {65, 110, 97, 108, 121, 115, 105, 115};
 
 
 //    char **output_FNT = calculate_FNT(plaintext_FNT, 3);
-
     printf("FNT:\n");
     int *X_k = (int *) calloc(N, sizeof(int));
     X_k = calculate_FNT(plaintext_FNT, 3);
     for(int i = 0; i < N; i++){
         printf("output_FNT[%d] = %d\n", i, X_k[i]);
-    }
+     }
     return 0;
-
 }
 
 //THIS FUNCTION CONVERTS STRING OR CHARACTER ARRAY INTO BINARY STRINGS
@@ -335,6 +333,7 @@ int *calculate_O2NMNT(int *plaintext, int N, int M_p) {
     //ONMNT matrix for p = 7 and N = 8
     if(N == 8) {
         int O2NMNT[8][8] =
+
                     {
                         {72, 19, 19, 72, 5, 99, 28, 122},
                         {19, 5, 122, 108, 28, 72, 72, 28},
@@ -706,3 +705,5 @@ int* calculate_FNT(char *plaintext[N], int t){
     }
     return X_k;
 } //END OF MAIN FUNCTION
+
+
